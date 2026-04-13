@@ -1,0 +1,13 @@
+services:
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: rabelus-cortex-ui
+    ports:
+      - "3000:8080"
+    environment:
+      - WEBUI_AUTH=False # Autenticação desativada para acesso direto local
+      # Conecta o WebUI ao Ollama que JÁ ESTÁ rodando no seu Windows Host
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+    volumes:
+      - ./memory/cortex:/app/backend/data
+    restart: always
