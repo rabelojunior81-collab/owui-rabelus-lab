@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open WebUI — Wikipedia Completa | Rabelus Lab</title>
+  <meta name="description" content="Guia completo e enciclopédico do Open WebUI: instalação, funcionalidades, customização, rebranding, arquitetura e muito mais. Por Rabelus Lab.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="navbar-logo">
+      <div class="logo-icon">OI</div>
+      <span class="navbar-brand">OPEN <span>WEBUI</span></span>
+    </a>
+    <ul class="navbar-links" id="navLinks">
+      <li><a href="#visao-geral">Visão Geral</a></li>
+      <li><a href="#instalacao">Instalação</a></li>
+      <li><a href="#funcionalidades">Funcionalidades</a></li>
+      <li><a href="#arquitetura">Arquitetura</a></li>
+      <li><a href="#providers">Providers</a></li>
+      <li><a href="#customizacao">Customização</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://github.com/open-webui/open-webui" target="_blank" class="navbar-cta">GitHub ↗</a></li>
+    </ul>
+    <button class="navbar-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          WIKIPEDIA COMPLETA · RABELUS LAB
+        </div>
+        <h1 class="hero-name">Open<br><span class="hero-name-highlight">WebUI</span></h1>
+        <p class="hero-subtitle">The Freedom AI Stack · Self-Hosted · Open Source</p>
+        <p class="hero-description">
+          Plataforma de IA auto-hospedada, extensível e agnóstica de provedores. Conecte qualquer modelo — local ou nuvem — com uma interface unificada, poderosa e completamente sob seu controle.
+        </p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">290M</span>
+            <span class="stat-label">Downloads</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">373K</span>
+            <span class="stat-label">Comunidade</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">132K</span>
+            <span class="stat-label">Stars GitHub</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">BSD-3</span>
+            <span class="stat-label">Licença</span>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a href="#instalacao" class="btn-primary">Instalar Agora</a>
+          <a href="#funcionalidades" class="btn-secondary">Ver Funcionalidades</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">owui@rabelus-lab:~$</span>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line"><span class="t-prompt">$</span> <span class="t-cmd">docker run -d -p 3000:8080</span></div>
+            <div class="terminal-line t-indent"><span class="t-flag">--add-host=host.docker.internal:host-gateway</span></div>
+            <div class="terminal-line t-indent"><span class="t-flag">-v open-webui:/app/backend/data</span></div>
+            <div class="terminal-line t-indent"><span class="t-flag">--name open-webui --restart always</span></div>
+            <div class="terminal-line t-indent"><span class="t-pkg">ghcr.io/open-webui/open-webui:main</span></div>
+            <div class="terminal-line t-gap"></div>
+            <div class="terminal-line"><span class="t-success">✓</span> <span class="t-output">Container started successfully</span></div>
+            <div class="terminal-line"><span class="t-success">✓</span> <span class="t-output">Open WebUI running at</span> <span class="t-url">http://localhost:3000</span></div>
+            <div class="terminal-line t-gap"></div>
+            <div class="terminal-line"><span class="t-prompt">$</span> <span class="t-cursor">█</span></div>
+          </div>
+        </div>
+        <div class="hero-badges-grid">
+          <div class="badge-pill fire">🔥 Multi-Provider</div>
+          <div class="badge-pill cyan">⚡ Hotswap Models</div>
+          <div class="badge-pill gold">🧠 RAG Nativo</div>
+          <div class="badge-pill purple">🐍 Python Tools</div>
+          <div class="badge-pill olive">🔒 Self-Hosted</div>
+          <div class="badge-pill fire">🎤 Voice & Vision</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>SCROLL PARA EXPLORAR</span>
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- ÍNDICE / TOC -->
+  <section class="toc-section" id="toc">
+    <div class="container">
+      <div class="section-label">// ÍNDICE</div>
+      <h2 class="section-title">Navegue pelo Conteúdo</h2>
+      <div class="toc-grid">
+        <a href="#visao-geral" class="toc-card">
+          <span class="toc-num">01</span>
+          <span class="toc-icon">🌐</span>
+          <span class="toc-title">Visão Geral</span>
+          <span class="toc-desc">O que é, proposta de valor, histórico</span>
+        </a>
+        <a href="#instalacao" class="toc-card">
+          <span class="toc-num">02</span>
+          <span class="toc-icon">⚙️</span>
+          <span class="toc-title">Instalação</span>
+          <span class="toc-desc">Docker, pip, Kubernetes, cloud</span>
+        </a>
+        <a href="#funcionalidades" class="toc-card">
+          <span class="toc-num">03</span>
+          <span class="toc-icon">⭐</span>
+          <span class="toc-title">Funcionalidades</span>
+          <span class="toc-desc">Chat, RAG, voz, imagem, terminal</span>
+        </a>
+        <a href="#arquitetura" class="toc-card">
+          <span class="toc-num">04</span>
+          <span class="toc-icon">🏗️</span>
+          <span class="toc-title">Arquitetura</span>
+          <span class="toc-desc">Stack técnico, componentes, fluxo</span>
+        </a>
+        <a href="#providers" class="toc-card">
+          <span class="toc-num">05</span>
+          <span class="toc-icon">🔌</span>
+          <span class="toc-title">Providers & Hotswap</span>
+          <span class="toc-desc">Multi-provider, troca de modelos</span>
+        </a>
+        <a href="#customizacao" class="toc-card">
+          <span class="toc-num">06</span>
+          <span class="toc-icon">🎨</span>
+          <span class="toc-title">Customização</span>
+          <span class="toc-desc">Rebranding, fork, licença</span>
+        </a>
+        <a href="#enterprise" class="toc-card">
+          <span class="toc-num">07</span>
+          <span class="toc-icon">🏢</span>
+          <span class="toc-title">Enterprise</span>
+          <span class="toc-desc">RBAC, SSO, SCIM, observabilidade</span>
+        </a>
+        <a href="#faq" class="toc-card">
+          <span class="toc-num">08</span>
+          <span class="toc-icon">❓</span>
+          <span class="toc-title">FAQ</span>
+          <span class="toc-desc">Perguntas frequentes e respostas</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 1: VISÃO GERAL -->
+  <section class="content-section" id="visao-geral">
+    <div class="container">
+      <div class="section-label">// 01 · VISÃO GERAL</div>
+      <h2 class="section-title">O que é o <span class="highlight">Open WebUI</span>?</h2>
+      <p class="section-intro">
+        Open WebUI é uma plataforma de interface de usuário auto-hospedada para Inteligência Artificial. Nasceu como uma alternativa ao ChatGPT para quem roda modelos locais com Ollama, mas evoluiu para se tornar um "sistema operacional de IA" completo — agnóstico de provedores, extensível com Python e projetado para operar totalmente offline ou em nuvem.
+      </p>
+
+      <div class="info-grid">
+        <div class="info-card glass">
+          <div class="info-card-icon">📅</div>
+          <div class="info-card-content">
+            <h4>Criado em</h4>
+            <p>2023 por Timothy Jaeryang Baek. Originalmente chamado "Ollama WebUI", renomeado para Open WebUI em 2024.</p>
+          </div>
+        </div>
+        <div class="info-card glass">
+          <div class="info-card-icon">⚖️</div>
+          <div class="info-card-content">
+            <h4>Licença</h4>
+            <p>BSD 3-Clause com restrição de branding. Open source com código público no GitHub.</p>
+          </div>
+        </div>
+        <div class="info-card glass">
+          <div class="info-card-icon">🏆</div>
+          <div class="info-card-content">
+            <h4>Reconhecimentos</h4>
+            <p>A16z Open Source AI Grant 2025 · Mozilla Builders 2024 · GitHub Accelerator 2024</p>
+          </div>
+        </div>
+        <div class="info-card glass">
+          <div class="info-card-icon">🌍</div>
+          <div class="info-card-content">
+            <h4>Comunidade</h4>
+            <p>373.000+ membros ativos. 290 milhões de downloads. 132K+ stars no GitHub.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="screenshot-block">
+        <div class="screenshot-label">Interface Principal do Open WebUI</div>
+        <img src="assets/screenshots/owui-chat-interface.png" alt="Interface principal do Open WebUI" class="screenshot-img" loading="lazy">
+        <p class="screenshot-caption">A interface do Open WebUI oferece uma experiência similar ao ChatGPT, mas totalmente auto-hospedada e com suporte a múltiplos modelos e provedores simultaneamente.</p>
+      </div>
+
+      <div class="highlight-box">
+        <div class="highlight-box-title">💡 A Filosofia Central</div>
+        <blockquote>
+          "Open WebUI is being built so everyone can run AI for themselves. Not rent it. Not depend on it. Own it. Self-sufficient, adaptable, and ready for wherever humanity goes — from a laptop to the stars."
+        </blockquote>
+        <p>— Missão oficial do Open WebUI</p>
+      </div>
+
+      <h3 class="subsection-title">Linha do Tempo</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2023</span>
+            <h4>Nascimento como "Ollama WebUI"</h4>
+            <p>Criado por Timothy Jaeryang Baek como interface web para o Ollama. Foco inicial em modelos locais.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">Jan 2024</span>
+            <h4>Renomeação para Open WebUI</h4>
+            <p>Expansão para suportar APIs compatíveis com OpenAI. Abertura para múltiplos provedores.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">Mid 2024</span>
+            <h4>GitHub Accelerator & Mozilla Builders</h4>
+            <p>Reconhecimento pela comunidade open source. Explosão de adoção com 100M+ downloads.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2025</span>
+            <h4>A16z Grant & Enterprise</h4>
+            <p>A16z Open Source AI Grant. Lançamento de planos Enterprise com SSO, RBAC e suporte LTS.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot active"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2026</span>
+            <h4>290M Downloads · App Desktop em Desenvolvimento</h4>
+            <p>Comunidade de 373K membros. Desktop App nativo em desenvolvimento. Workflows visuais planejados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 2: INSTALAÇÃO -->
+  <section class="content-section alt-bg" id="instalacao">
+    <div class="container">
+      <div class="section-label">// 02 · INSTALAÇÃO</div>
+      <h2 class="section-title">Como <span class="highlight">Instalar</span></h2>
+      <p class="section-intro">
+        O Open WebUI oferece múltiplas formas de instalação para atender desde usuários individuais até implantações corporativas em Kubernetes. Escolha o método que melhor se adapta ao seu ambiente.
+      </p>
+
+      <div class="install-tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="docker">🐳 Docker</button>
+          <button class="tab-btn" data-tab="pip">🐍 pip</button>
+          <button class="tab-btn" data-tab="docker-compose">📦 Docker Compose</button>
+          <button class="tab-btn" data-tab="kubernetes">☸️ Kubernetes</button>
+          <button class="tab-btn" data-tab="gpu">⚡ GPU (CUDA)</button>
+        </div>
+
+        <div class="tab-content active" id="tab-docker">
+          <div class="install-method">
+            <h3>Docker — Instalação Rápida (1 comando)</h3>
+            <p>O método mais simples. Funciona em qualquer sistema com Docker instalado. Sem Python, sem dependências.</p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">bash</span>
+                <button class="copy-btn" data-code="docker-basic">Copiar</button>
+              </div>
+              <pre id="docker-basic"><code><span class="c-comment"># Instalação básica (sem Ollama local)</span>
+docker run -d -p 3000:8080 \
+  --add-host=host.docker.internal:host-gateway \
+  -v open-webui:/app/backend/data \
+  --name open-webui \
+  --restart always \
+  ghcr.io/open-webui/open-webui:main
+
+<span class="c-comment"># Acesse em: http://localhost:3000</span></code></pre>
+            </div>
+            <div class="install-notes">
+              <div class="note-item success">✅ Funciona offline após download da imagem</div>
+              <div class="note-item success">✅ Dados persistidos em volume Docker</div>
+              <div class="note-item success">✅ Reinicia automaticamente com o sistema</div>
+              <div class="note-item info">ℹ️ Requer Docker Desktop ou Docker Engine instalado</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-pip">
+          <div class="install-method">
+            <h3>pip — Instalação via Python</h3>
+            <p>Ideal para quem já tem Python 3.11+ instalado. Sem necessidade de Docker.</p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">bash</span>
+                <button class="copy-btn" data-code="pip-install">Copiar</button>
+              </div>
+              <pre id="pip-install"><code><span class="c-comment"># Instalar via pip</span>
+pip install open-webui
+
+<span class="c-comment"># Iniciar o servidor</span>
+open-webui serve
+
+<span class="c-comment"># Acesse em: http://localhost:8080</span>
+<span class="c-comment"># (porta padrão diferente do Docker)</span></code></pre>
+            </div>
+            <div class="install-notes">
+              <div class="note-item success">✅ Sem Docker necessário</div>
+              <div class="note-item success">✅ Integração direta com ambiente Python</div>
+              <div class="note-item warning">⚠️ Requer Python 3.11+</div>
+              <div class="note-item info">ℹ️ Porta padrão: 8080 (não 3000)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-docker-compose">
+          <div class="install-method">
+            <h3>Docker Compose — Com Ollama Integrado</h3>
+            <p>Sobe Open WebUI + Ollama juntos em um único comando. Ideal para uso local completo.</p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">yaml</span>
+                <button class="copy-btn" data-code="compose">Copiar</button>
+              </div>
+              <pre id="compose"><code><span class="c-comment"># docker-compose.yml</span>
+version: '3.8'
+services:
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama:/root/.ollama
+    restart: unless-stopped
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    depends_on:
+      - ollama
+    ports:
+      - "3000:8080"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    volumes:
+      - open-webui:/app/backend/data
+    restart: unless-stopped
+
+volumes:
+  ollama:
+  open-webui:</code></pre>
+            </div>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">bash</span>
+                <button class="copy-btn" data-code="compose-run">Copiar</button>
+              </div>
+              <pre id="compose-run"><code><span class="c-comment"># Subir tudo</span>
+docker compose up -d
+
+<span class="c-comment"># Verificar status</span>
+docker compose ps
+
+<span class="c-comment"># Baixar um modelo no Ollama</span>
+docker exec -it ollama ollama pull llama3.2</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-kubernetes">
+          <div class="install-method">
+            <h3>Kubernetes — Produção com Helm</h3>
+            <p>Para implantações em escala corporativa com alta disponibilidade.</p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">bash</span>
+                <button class="copy-btn" data-code="helm">Copiar</button>
+              </div>
+              <pre id="helm"><code><span class="c-comment"># Adicionar repositório Helm</span>
+helm repo add open-webui https://helm.openwebui.com/
+helm repo update
+
+<span class="c-comment"># Instalar com valores padrão</span>
+helm install open-webui open-webui/open-webui \
+  --namespace open-webui \
+  --create-namespace
+
+<span class="c-comment"># Instalar com configuração personalizada</span>
+helm install open-webui open-webui/open-webui \
+  --namespace open-webui \
+  --create-namespace \
+  --set persistence.enabled=true \
+  --set service.type=LoadBalancer</code></pre>
+            </div>
+            <div class="install-notes">
+              <div class="note-item success">✅ Suporte a escalabilidade horizontal</div>
+              <div class="note-item success">✅ Sessões via Redis para multi-worker</div>
+              <div class="note-item success">✅ Suporte a cloud storage (S3, GCS, Azure)</div>
+              <div class="note-item info">ℹ️ Requer cluster Kubernetes configurado</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-gpu">
+          <div class="install-method">
+            <h3>GPU (NVIDIA CUDA) — Máxima Performance</h3>
+            <p>Para rodar modelos locais com aceleração GPU. Requer NVIDIA Container Toolkit.</p>
+            <div class="code-block">
+              <div class="code-header">
+                <span class="code-lang">bash</span>
+                <button class="copy-btn" data-code="gpu">Copiar</button>
+              </div>
+              <pre id="gpu"><code><span class="c-comment"># Open WebUI + Ollama com GPU</span>
+docker run -d -p 3000:8080 \
+  --gpus=all \
+  -v ollama:/root/.ollama \
+  -v open-webui:/app/backend/data \
+  --name open-webui-gpu \
+  --restart always \
+  ghcr.io/open-webui/open-webui:ollama
+
+<span class="c-comment"># Verificar uso de GPU</span>
+docker exec open-webui-gpu nvidia-smi</code></pre>
+            </div>
+            <div class="install-notes">
+              <div class="note-item success">✅ Inferência local com aceleração GPU</div>
+              <div class="note-item success">✅ Imagem :ollama inclui Ollama integrado</div>
+              <div class="note-item warning">⚠️ Requer NVIDIA Container Toolkit</div>
+              <div class="note-item warning">⚠️ Requer driver NVIDIA compatível</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">Variáveis de Ambiente Essenciais</h3>
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Variável</th>
+              <th>Padrão</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>OLLAMA_BASE_URL</code></td><td><code>http://localhost:11434</code></td><td>URL do servidor Ollama local</td></tr>
+            <tr><td><code>OPENAI_API_KEY</code></td><td>—</td><td>Chave de API da OpenAI</td></tr>
+            <tr><td><code>OPENAI_API_BASE_URL</code></td><td><code>https://api.openai.com/v1</code></td><td>URL base da API OpenAI (ou compatível)</td></tr>
+            <tr><td><code>DATABASE_URL</code></td><td>SQLite local</td><td>URL do banco de dados (PostgreSQL para produção)</td></tr>
+            <tr><td><code>SECRET_KEY</code></td><td>Gerada automaticamente</td><td>Chave secreta para JWT e sessões</td></tr>
+            <tr><td><code>WEBUI_NAME</code></td><td><code>Open WebUI</code></td><td>Nome da instância (rebranding)</td></tr>
+            <tr><td><code>ENABLE_SIGNUP</code></td><td><code>true</code></td><td>Permitir novos cadastros</td></tr>
+            <tr><td><code>DEFAULT_USER_ROLE</code></td><td><code>pending</code></td><td>Papel padrão de novos usuários</td></tr>
+            <tr><td><code>REDIS_URL</code></td><td>—</td><td>URL do Redis para sessões distribuídas</td></tr>
+            <tr><td><code>STORAGE_PROVIDER</code></td><td><code>local</code></td><td>Provedor de armazenamento: local, s3, gcs, azure</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 3: FUNCIONALIDADES -->
+  <section class="content-section" id="funcionalidades">
+    <div class="container">
+      <div class="section-label">// 03 · FUNCIONALIDADES</div>
+      <h2 class="section-title">O que o Open WebUI <span class="highlight">Faz</span></h2>
+      <p class="section-intro">
+        O Open WebUI não é apenas um chat. É uma plataforma completa de produtividade com IA que unifica conversas, conhecimento, ferramentas, voz, visão e automação em uma única interface.
+      </p>
+
+      <!-- Chat & Conversas -->
+      <div class="feature-block">
+        <div class="feature-block-header">
+          <span class="feature-icon">💬</span>
+          <div>
+            <h3>Chat & Conversas</h3>
+            <p>Converse com qualquer modelo, troque mid-conversation, nunca perca contexto.</p>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="fc-icon">🔀</div>
+            <h4>Multi-Model Chats</h4>
+            <p>Execute dois modelos lado a lado e compare respostas em tempo real. Ideal para avaliar qualidade e custo.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🔄</div>
+            <h4>Hotswap de Modelos</h4>
+            <p>Troque de modelo durante a conversa mantendo todo o histórico e contexto. Sem perda de dados.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">📎</div>
+            <h4>Upload de Arquivos</h4>
+            <p>Anexe PDFs, imagens, código, planilhas. O modelo analisa e responde com base no conteúdo.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🔍</div>
+            <h4>Busca na Web</h4>
+            <p>IA pesquisa a web em tempo real e cita fontes. Integração com SearXNG, Google, Bing e mais.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🧠</div>
+            <h4>Memória Persistente</h4>
+            <p>O modelo lembra fatos sobre você entre conversas. Memória configurável e editável pelo usuário.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">📝</div>
+            <h4>Fila de Mensagens</h4>
+            <p>Continue digitando enquanto o modelo responde. Mensagens são enfileiradas e enviadas automaticamente.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🗂️</div>
+            <h4>Organização</h4>
+            <p>Pastas, tags, pins para organizar conversas. Busca full-text em todo o histórico.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🔁</div>
+            <h4>Regeneração Seletiva</h4>
+            <p>Edite qualquer mensagem anterior e regenere a partir daquele ponto. Branching de conversas.</p>
+          </div>
+        </div>
+        <div class="screenshot-block">
+          <div class="screenshot-label">Chat Multi-Modelo — Comparação Lado a Lado</div>
+          <img src="assets/screenshots/owui-multimodel.png" alt="Open WebUI multi-model chat" class="screenshot-img" loading="lazy">
+        </div>
+      </div>
+
+      <!-- RAG & Conhecimento -->
+      <div class="feature-block">
+        <div class="feature-block-header">
+          <span class="feature-icon">📚</span>
+          <div>
+            <h3>Knowledge & RAG</h3>
+            <p>Dê ao seu modelo acesso aos seus documentos — e deixe ele encontrar o que importa.</p>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card highlight-card">
+            <div class="fc-icon">🗄️</div>
+            <h4>9 Bancos Vetoriais</h4>
+            <p>ChromaDB, PGVector, Qdrant, Milvus, Elasticsearch, OpenSearch, Pinecone, Weaviate e mais.</p>
+          </div>
+          <div class="feature-card highlight-card">
+            <div class="fc-icon">🔍</div>
+            <h4>Busca Híbrida</h4>
+            <p>BM25 + busca vetorial com reranking por cross-encoder. Melhor recall e precisão.</p>
+          </div>
+          <div class="feature-card highlight-card">
+            <div class="fc-icon">📑</div>
+            <h4>5 Motores de Extração</h4>
+            <p>Tika, Docling, Azure Document Intelligence, Mistral OCR e loaders customizados.</p>
+          </div>
+          <div class="feature-card highlight-card">
+            <div class="fc-icon">🤖</div>
+            <h4>Retrieval Agêntico</h4>
+            <p>Modelos buscam e leem documentos de forma autônoma via function calling.</p>
+          </div>
+          <div class="feature-card highlight-card">
+            <div class="fc-icon">📄</div>
+            <h4>Modo Contexto Completo</h4>
+            <p>Injete documentos inteiros sem chunking. Sem perda de contexto, sem alucinações por fragmentação.</p>
+          </div>
+          <div class="feature-card highlight-card">
+            <div class="fc-icon">🌐</div>
+            <h4>Web Scraping</h4>
+            <p>Adicione URLs diretamente à base de conhecimento. O sistema faz scraping e indexa automaticamente.</p>
+          </div>
+        </div>
+        <div class="screenshot-block">
+          <div class="screenshot-label">Pipeline RAG — Busca em Documentos</div>
+          <img src="assets/screenshots/owui-rag.png" alt="Open WebUI RAG pipeline" class="screenshot-img" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Voz & Multimodalidade -->
+      <div class="feature-block">
+        <div class="feature-block-header">
+          <span class="feature-icon">🎤</span>
+          <div>
+            <h3>Voz, Visão & Multimodalidade</h3>
+            <p>Fale, mostre imagens, gere conteúdo. Tudo em uma interface.</p>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="fc-icon">🎙️</div>
+            <h4>Speech-to-Text</h4>
+            <p>Transcrição de voz em tempo real. Suporte a Whisper local, OpenAI Whisper API e provedores customizados.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🔊</div>
+            <h4>Text-to-Speech</h4>
+            <p>Leitura das respostas em voz alta. Suporte a OpenAI TTS, ElevenLabs, Azure e motores locais.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">📞</div>
+            <h4>Chamadas de Voz & Vídeo</h4>
+            <p>Modo hands-free com detecção de atividade de voz (VAD). Conversas naturais sem teclado.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🖼️</div>
+            <h4>Geração de Imagens</h4>
+            <p>DALL-E 3, Gemini Imagen, ComfyUI, Automatic1111. Gere e edite imagens diretamente no chat.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">👁️</div>
+            <h4>Visão Computacional</h4>
+            <p>Envie imagens para análise. Suporte a todos os modelos multimodais (GPT-4V, Claude, LLaVA, etc.).</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">📹</div>
+            <h4>Análise de Vídeo</h4>
+            <p>Envie vídeos para análise por modelos compatíveis. Extração de frames e transcrição automática.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Open Terminal -->
+      <div class="feature-block">
+        <div class="feature-block-header">
+          <span class="feature-icon">💻</span>
+          <div>
+            <h3>Open Terminal — Computador Real para a IA</h3>
+            <p>Conecte um ambiente de computação real. A IA escreve código, executa, lê o output, corrige erros e itera.</p>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="fc-icon">⚡</div>
+            <h4>Execução de Código Real</h4>
+            <p>Roda comandos reais e retorna output. Python, bash, node — qualquer linguagem disponível no ambiente.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">📁</div>
+            <h4>File Browser</h4>
+            <p>Navegue, faça upload, download e edite arquivos na barra lateral. Integração completa com o filesystem.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🌐</div>
+            <h4>Preview de Websites</h4>
+            <p>Preview ao vivo de projetos web diretamente dentro do Open WebUI. Veja o resultado em tempo real.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🔒</div>
+            <h4>Isolamento Opcional</h4>
+            <p>Execute em container Docker isolado ou diretamente no metal. Controle total sobre o nível de segurança.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Channels & Colaboração -->
+      <div class="feature-block">
+        <div class="feature-block-header">
+          <span class="feature-icon">📢</span>
+          <div>
+            <h3>Channels — Colaboração em Tempo Real</h3>
+            <p>Espaços persistentes e compartilhados onde humanos e modelos de IA participam da mesma conversa.</p>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="fc-icon">🤖</div>
+            <h4>@model Tagging</h4>
+            <p>Invoque qualquer modelo na conversa com @nome. <code>@gpt-4o</code> para rascunhar, <code>@claude</code> para criticar.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🧵</div>
+            <h4>Threads & Reações</h4>
+            <p>Respostas em thread, pins e reações com emoji. Organização natural de discussões complexas.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🔒</div>
+            <h4>Controle de Acesso</h4>
+            <p>Canais públicos, privados, por grupo e mensagens diretas. Controle granular de quem vê o quê.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🧠</div>
+            <h4>Consciência de Canal</h4>
+            <p>Modelos buscam e sintetizam informações de canais anteriores de forma autônoma.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extensibilidade -->
+      <div class="feature-block">
+        <div class="feature-block-header">
+          <span class="feature-icon">🔌</span>
+          <div>
+            <h3>Extensibilidade & Plugins</h3>
+            <p>Open WebUI é uma plataforma, não um produto fechado. Adicione qualquer capacidade com Python, OpenAPI ou MCP.</p>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="fc-icon">🐍</div>
+            <h4>Tools & Functions</h4>
+            <p>Scripts Python que rodam no chat. Editor de código embutido. Instale da comunidade com 1 clique.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🔧</div>
+            <h4>Pipelines</h4>
+            <p>Framework modular para filtros, provedores e lógica customizada. Intercepte e transforme mensagens.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🔗</div>
+            <h4>MCP Support</h4>
+            <p>Suporte nativo a Model Context Protocol (Streamable HTTP). Conecte servidores MCP de terceiros.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🌐</div>
+            <h4>OpenAPI Servers</h4>
+            <p>Auto-descoberta de ferramentas de qualquer endpoint compatível com OpenAPI.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">📝</div>
+            <h4>Skills & Prompts</h4>
+            <p>Conjuntos de instruções em Markdown que ensinam modelos como abordar tarefas. Templates com variáveis.</p>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🏪</div>
+            <h4>Community Hub</h4>
+            <p>373K membros compartilhando prompts, modelos, ferramentas e funções em openwebui.com.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 4: ARQUITETURA -->
+  <section class="content-section alt-bg" id="arquitetura">
+    <div class="container">
+      <div class="section-label">// 04 · ARQUITETURA</div>
+      <h2 class="section-title">Stack <span class="highlight">Técnico</span></h2>
+      <p class="section-intro">
+        O Open WebUI é construído com uma arquitetura moderna e separada em frontend e backend, permitindo escalabilidade, extensibilidade e manutenção independente de cada camada.
+      </p>
+
+      <div class="arch-diagram">
+        <div class="arch-layer">
+          <div class="arch-layer-label">USUÁRIO</div>
+          <div class="arch-boxes">
+            <div class="arch-box user">Browser / PWA</div>
+            <div class="arch-box user">Desktop App (em dev)</div>
+            <div class="arch-box user">API Client</div>
+          </div>
+        </div>
+        <div class="arch-arrow">↓ HTTP / WebSocket</div>
+        <div class="arch-layer">
+          <div class="arch-layer-label">FRONTEND</div>
+          <div class="arch-boxes">
+            <div class="arch-box frontend">SvelteKit + TypeScript</div>
+            <div class="arch-box frontend">Tailwind CSS</div>
+            <div class="arch-box frontend">PWA (offline)</div>
+          </div>
+        </div>
+        <div class="arch-arrow">↓ REST / SSE</div>
+        <div class="arch-layer">
+          <div class="arch-layer-label">BACKEND</div>
+          <div class="arch-boxes">
+            <div class="arch-box backend">FastAPI (Python)</div>
+            <div class="arch-box backend">SQLAlchemy ORM</div>
+            <div class="arch-box backend">LangChain</div>
+          </div>
+        </div>
+        <div class="arch-arrow">↓ HTTP / gRPC</div>
+        <div class="arch-layer">
+          <div class="arch-layer-label">PROVIDERS</div>
+          <div class="arch-boxes">
+            <div class="arch-box provider">Ollama (local)</div>
+            <div class="arch-box provider">OpenAI API</div>
+            <div class="arch-box provider">Anthropic / Gemini</div>
+            <div class="arch-box provider">Qualquer OpenAI-compat.</div>
+          </div>
+        </div>
+        <div class="arch-arrow">↓ Storage</div>
+        <div class="arch-layer">
+          <div class="arch-layer-label">DADOS</div>
+          <div class="arch-boxes">
+            <div class="arch-box data">SQLite / PostgreSQL</div>
+            <div class="arch-box data">ChromaDB / Qdrant</div>
+            <div class="arch-box data">S3 / GCS / Azure</div>
+            <div class="arch-box data">Redis (sessões)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-stack-grid">
+        <div class="tech-category">
+          <h3>Frontend</h3>
+          <div class="tech-items">
+            <div class="tech-item"><span class="tech-badge svelte">Svelte</span> Framework reativo</div>
+            <div class="tech-item"><span class="tech-badge svelte">SvelteKit</span> SSR + routing</div>
+            <div class="tech-item"><span class="tech-badge ts">TypeScript</span> Tipagem estática</div>
+            <div class="tech-item"><span class="tech-badge css">Tailwind CSS</span> Estilização</div>
+            <div class="tech-item"><span class="tech-badge pwa">PWA</span> Offline support</div>
+          </div>
+        </div>
+        <div class="tech-category">
+          <h3>Backend</h3>
+          <div class="tech-items">
+            <div class="tech-item"><span class="tech-badge py">FastAPI</span> API assíncrona</div>
+            <div class="tech-item"><span class="tech-badge py">SQLAlchemy</span> ORM</div>
+            <div class="tech-item"><span class="tech-badge py">LangChain</span> Orquestração LLM</div>
+            <div class="tech-item"><span class="tech-badge py">PyTorch</span> Embeddings locais</div>
+            <div class="tech-item"><span class="tech-badge py">Transformers</span> Hugging Face</div>
+          </div>
+        </div>
+        <div class="tech-category">
+          <h3>Bancos de Dados</h3>
+          <div class="tech-items">
+            <div class="tech-item"><span class="tech-badge db">SQLite</span> Padrão (local)</div>
+            <div class="tech-item"><span class="tech-badge db">PostgreSQL</span> Produção</div>
+            <div class="tech-item"><span class="tech-badge db">ChromaDB</span> Vetores (padrão)</div>
+            <div class="tech-item"><span class="tech-badge db">Qdrant</span> Vetores (alta perf.)</div>
+            <div class="tech-item"><span class="tech-badge db">Redis</span> Sessões distribuídas</div>
+          </div>
+        </div>
+        <div class="tech-category">
+          <h3>Infraestrutura</h3>
+          <div class="tech-items">
+            <div class="tech-item"><span class="tech-badge infra">Docker</span> Containerização</div>
+            <div class="tech-item"><span class="tech-badge infra">Kubernetes</span> Orquestração</div>
+            <div class="tech-item"><span class="tech-badge infra">Helm</span> Package manager K8s</div>
+            <div class="tech-item"><span class="tech-badge infra">OpenTelemetry</span> Observabilidade</div>
+            <div class="tech-item"><span class="tech-badge infra">S3/GCS/Azure</span> Storage cloud</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 5: PROVIDERS & HOTSWAP -->
+  <section class="content-section" id="providers">
+    <div class="container">
+      <div class="section-label">// 05 · PROVIDERS & HOTSWAP</div>
+      <h2 class="section-title">Multi-Provider & <span class="highlight">Hotswap</span></h2>
+      <p class="section-intro">
+        O Open WebUI foi projetado desde o início para ser agnóstico de provedores. Conecte quantos quiser simultaneamente — todos os modelos aparecem em um único dropdown unificado.
+      </p>
+
+      <div class="providers-diagram">
+        <div class="providers-center">
+          <div class="providers-hub">
+            <div class="hub-icon">OI</div>
+            <div class="hub-label">Open WebUI</div>
+            <div class="hub-sublabel">Hub Central</div>
+          </div>
+        </div>
+        <div class="providers-spokes">
+          <div class="provider-spoke local">
+            <div class="spoke-icon">🦙</div>
+            <div class="spoke-name">Ollama</div>
+            <div class="spoke-models">Llama, Mistral, Gemma, Phi...</div>
+          </div>
+          <div class="provider-spoke cloud">
+            <div class="spoke-icon">🤖</div>
+            <div class="spoke-name">OpenAI</div>
+            <div class="spoke-models">GPT-4o, GPT-4.1, o3, o4-mini</div>
+          </div>
+          <div class="provider-spoke cloud">
+            <div class="spoke-icon">🧠</div>
+            <div class="spoke-name">Anthropic</div>
+            <div class="spoke-models">Claude Opus, Sonnet, Haiku</div>
+          </div>
+          <div class="provider-spoke cloud">
+            <div class="spoke-icon">💎</div>
+            <div class="spoke-name">Google Gemini</div>
+            <div class="spoke-models">Gemini 2.5 Pro, Flash...</div>
+          </div>
+          <div class="provider-spoke local">
+            <div class="spoke-icon">⚡</div>
+            <div class="spoke-name">Groq</div>
+            <div class="spoke-models">Llama, Mixtral (ultra-rápido)</div>
+          </div>
+          <div class="provider-spoke local">
+            <div class="spoke-icon">🔧</div>
+            <div class="spoke-name">vLLM / llama.cpp</div>
+            <div class="spoke-models">Qualquer modelo GGUF/HF</div>
+          </div>
+          <div class="provider-spoke compat">
+            <div class="spoke-icon">🌐</div>
+            <div class="spoke-name">OpenRouter</div>
+            <div class="spoke-models">200+ modelos unificados</div>
+          </div>
+          <div class="provider-spoke compat">
+            <div class="spoke-icon">☁️</div>
+            <div class="spoke-name">Azure / AWS Bedrock</div>
+            <div class="spoke-models">Modelos enterprise</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Tipo</th>
+              <th>Protocolo</th>
+              <th>Modelos Notáveis</th>
+              <th>Requer API Key</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Ollama</td><td><span class="badge-local">Local</span></td><td>Ollama API</td><td>Llama 3.3, Mistral, Gemma 3, Phi-4</td><td>Não</td></tr>
+            <tr><td>OpenAI</td><td><span class="badge-cloud">Cloud</span></td><td>OpenAI API</td><td>GPT-4o, GPT-4.1, o3, o4-mini</td><td>Sim</td></tr>
+            <tr><td>Anthropic</td><td><span class="badge-cloud">Cloud</span></td><td>OpenAI-compat.</td><td>Claude 3.7 Sonnet, Haiku, Opus</td><td>Sim</td></tr>
+            <tr><td>Google Gemini</td><td><span class="badge-cloud">Cloud</span></td><td>OpenAI-compat.</td><td>Gemini 2.5 Pro, 2.0 Flash</td><td>Sim</td></tr>
+            <tr><td>Groq</td><td><span class="badge-cloud">Cloud</span></td><td>OpenAI-compat.</td><td>Llama 3.3, Mixtral (ultra-rápido)</td><td>Sim</td></tr>
+            <tr><td>DeepSeek</td><td><span class="badge-cloud">Cloud</span></td><td>OpenAI-compat.</td><td>DeepSeek R1, V3</td><td>Sim</td></tr>
+            <tr><td>Mistral AI</td><td><span class="badge-cloud">Cloud</span></td><td>OpenAI-compat.</td><td>Mistral Large, Small</td><td>Sim</td></tr>
+            <tr><td>OpenRouter</td><td><span class="badge-cloud">Cloud</span></td><td>OpenAI-compat.</td><td>200+ modelos unificados</td><td>Sim</td></tr>
+            <tr><td>Azure OpenAI</td><td><span class="badge-cloud">Cloud</span></td><td>OpenAI-compat.</td><td>GPT-4o, GPT-4 Turbo</td><td>Sim</td></tr>
+            <tr><td>AWS Bedrock</td><td><span class="badge-cloud">Cloud</span></td><td>OpenAI-compat.</td><td>Claude, Llama, Titan</td><td>Sim</td></tr>
+            <tr><td>vLLM</td><td><span class="badge-local">Local</span></td><td>OpenAI-compat.</td><td>Qualquer modelo HuggingFace</td><td>Não</td></tr>
+            <tr><td>llama.cpp</td><td><span class="badge-local">Local</span></td><td>OpenAI-compat.</td><td>Qualquer modelo GGUF</td><td>Não</td></tr>
+            <tr><td>LM Studio</td><td><span class="badge-local">Local</span></td><td>OpenAI-compat.</td><td>Qualquer modelo suportado</td><td>Não</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-title">Como Adicionar um Provider</h3>
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Acesse Admin Settings</h4>
+            <p>Clique no ícone de usuário → Admin Panel → Aba "Connections"</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Adicione uma Conexão</h4>
+            <p>Clique em "+" para adicionar novo provider. Insira a URL base e a chave de API.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Auto-detecção de Modelos</h4>
+            <p>O Open WebUI detecta automaticamente os modelos disponíveis via endpoint <code>/models</code>.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Selecione no Dropdown</h4>
+            <p>Todos os modelos de todos os providers aparecem em um único dropdown unificado no chat.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="screenshot-block">
+        <div class="screenshot-label">Admin Panel — Configuração de Providers</div>
+        <img src="assets/screenshots/owui-admin-panel.png" alt="Open WebUI Admin Panel" class="screenshot-img" loading="lazy">
+      </div>
+
+      <div class="highlight-box cyan">
+        <div class="highlight-box-title">⚡ Hotswap em Ação</div>
+        <p>O Open WebUI permite trocar de modelo <strong>durante uma conversa ativa</strong> sem perder o histórico. O contexto completo (todas as mensagens anteriores) é enviado ao novo modelo automaticamente. Você também pode executar <strong>dois modelos simultaneamente</strong> na mesma janela para comparar respostas lado a lado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 6: CUSTOMIZAÇÃO & REBRANDING -->
+  <section class="content-section alt-bg" id="customizacao">
+    <div class="container">
+      <div class="section-label">// 06 · CUSTOMIZAÇÃO & REBRANDING</div>
+      <h2 class="section-title">Fork, Customização & <span class="highlight">Rebranding</span></h2>
+      <p class="section-intro">
+        O Open WebUI é open source e pode ser customizado, forkado e redistribuído — com regras claras sobre o que é permitido em cada cenário. Entenda a licença antes de fazer seu fork.
+      </p>
+
+      <h3 class="subsection-title">A Licença Explicada</h3>
+      <div class="license-grid">
+        <div class="license-card allowed">
+          <div class="license-header">✅ Sempre Permitido</div>
+          <ul>
+            <li>Usar para qualquer propósito (pessoal ou comercial)</li>
+            <li>Copiar, modificar e distribuir o código</li>
+            <li>Fazer fork no GitHub</li>
+            <li>Implantações privadas sem limite de usuários</li>
+            <li>Modificações técnicas completas (UI, backend, features)</li>
+            <li>Integrar em produtos próprios (mantendo branding)</li>
+          </ul>
+        </div>
+        <div class="license-card conditional">
+          <div class="license-header">⚠️ Condicional (Branding)</div>
+          <ul>
+            <li><strong>≤50 usuários/30 dias:</strong> Pode remover/alterar branding</li>
+            <li><strong>Contribuidor oficial:</strong> Pode alterar com permissão escrita</li>
+            <li><strong>Licença Enterprise:</strong> Rebranding completo permitido</li>
+            <li>Manter branding "Open WebUI" em implantações grandes</li>
+          </ul>
+        </div>
+        <div class="license-card forbidden">
+          <div class="license-header">❌ Proibido (sem licença Enterprise)</div>
+          <ul>
+            <li>Remover branding "Open WebUI" com +50 usuários</li>
+            <li>Alterar o nome, logo ou identidade visual em escala</li>
+            <li>Usar nome "Open WebUI" para endossar produtos derivados</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">Customizações Técnicas Permitidas</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="fc-icon">🎨</div>
+          <h4>Tema & Cores</h4>
+          <p>Modifique completamente o CSS. Crie temas customizados. Altere fontes, cores, layout.</p>
+          <div class="code-mini">WEBUI_FAVICON_URL=https://seu-logo.png</div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">📛</div>
+          <h4>Nome da Instância</h4>
+          <p>Configure o nome exibido na interface via variável de ambiente.</p>
+          <div class="code-mini">WEBUI_NAME="Meu AI Assistant"</div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">🔐</div>
+          <h4>Autenticação</h4>
+          <p>Desative signup público, configure SSO/OIDC, integre com LDAP corporativo.</p>
+          <div class="code-mini">ENABLE_SIGNUP=false</div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">🏠</div>
+          <h4>Página Inicial</h4>
+          <p>Customize a mensagem de boas-vindas, sugestões de prompts e layout da home.</p>
+          <div class="code-mini">Admin → Interface Settings</div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">🤖</div>
+          <h4>Modelos Padrão</h4>
+          <p>Configure qual modelo é selecionado por padrão para novos usuários.</p>
+          <div class="code-mini">DEFAULT_MODELS=gpt-4o</div>
+        </div>
+        <div class="feature-card">
+          <div class="fc-icon">📋</div>
+          <h4>Prompts do Sistema</h4>
+          <p>Defina prompts de sistema globais que se aplicam a todos os usuários ou grupos.</p>
+          <div class="code-mini">Admin → Models → System Prompt</div>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">Como Fazer um Fork</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-lang">bash</span>
+          <button class="copy-btn" data-code="fork">Copiar</button>
+        </div>
+        <pre id="fork"><code><span class="c-comment"># 1. Fork no GitHub (via interface web ou CLI)</span>
+gh repo fork open-webui/open-webui --clone --remote
+
+<span class="c-comment"># 2. Entrar no diretório</span>
+cd open-webui
+
+<span class="c-comment"># 3. Criar branch para suas modificações</span>
+git checkout -b meu-fork-customizado
+
+<span class="c-comment"># 4. Instalar dependências de desenvolvimento</span>
+npm install          <span class="c-comment"># Frontend</span>
+pip install -r backend/requirements.txt  <span class="c-comment"># Backend</span>
+
+<span class="c-comment"># 5. Rodar em modo desenvolvimento</span>
+npm run dev          <span class="c-comment"># Frontend (porta 5173)</span>
+cd backend && uvicorn main:app --reload  <span class="c-comment"># Backend (porta 8080)</span>
+
+<span class="c-comment"># 6. Build para produção</span>
+npm run build
+docker build -t meu-owui:latest .</code></pre>
+      </div>
+
+      <div class="highlight-box gold">
+        <div class="highlight-box-title">🏢 Opção Enterprise para Rebranding Completo</div>
+        <p>Se você precisa de rebranding completo (remover "Open WebUI" com mais de 50 usuários), a licença Enterprise é a solução. Ela inclui também: suporte LTS, SLA, suporte dedicado e recursos exclusivos de governança. Contato: <a href="https://openwebui.com/enterprise" target="_blank" class="link-highlight">openwebui.com/enterprise</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 7: ENTERPRISE -->
+  <section class="content-section" id="enterprise">
+    <div class="container">
+      <div class="section-label">// 07 · ENTERPRISE</div>
+      <h2 class="section-title">Open WebUI para <span class="highlight">Empresas</span></h2>
+      <p class="section-intro">
+        Para organizações que precisam de governança rigorosa, conformidade regulatória e suporte dedicado. Do startup à empresa global.
+      </p>
+
+      <div class="enterprise-grid">
+        <div class="enterprise-card">
+          <div class="ec-icon">👥</div>
+          <h3>RBAC Granular</h3>
+          <p>Controle de acesso baseado em funções. Defina permissões por usuário, grupo e recurso. Restrinja acesso a modelos específicos por departamento.</p>
+        </div>
+        <div class="enterprise-card">
+          <div class="ec-icon">🔐</div>
+          <h3>SSO / OIDC / LDAP</h3>
+          <p>Autenticação federada com qualquer provedor de identidade. Integração com Active Directory, Okta, Azure AD, Google Workspace.</p>
+        </div>
+        <div class="enterprise-card">
+          <div class="ec-icon">📋</div>
+          <h3>SCIM 2.0</h3>
+          <p>Provisionamento automatizado de usuários e grupos. Sincronização bidirecional com seu diretório corporativo.</p>
+        </div>
+        <div class="enterprise-card">
+          <div class="ec-icon">📊</div>
+          <h3>Analytics & Auditoria</h3>
+          <p>Dashboards de uso com volume de mensagens, consumo de tokens e rastreamento de custos por usuário e modelo.</p>
+        </div>
+        <div class="enterprise-card">
+          <div class="ec-icon">🔭</div>
+          <h3>OpenTelemetry</h3>
+          <p>Traces, métricas e logs para sua stack de observabilidade. Integração com Datadog, Grafana, Jaeger e mais.</p>
+        </div>
+        <div class="enterprise-card">
+          <div class="ec-icon">⚖️</div>
+          <h3>Escalabilidade Horizontal</h3>
+          <p>Sessões via Redis, múltiplos workers, múltiplos nós. Deploy em Kubernetes com Helm para alta disponibilidade.</p>
+        </div>
+        <div class="enterprise-card">
+          <div class="ec-icon">🛡️</div>
+          <h3>Suporte LTS</h3>
+          <p>Versões com suporte de longo prazo (Long-Term Support). SLA garantido e suporte dedicado.</p>
+        </div>
+        <div class="enterprise-card">
+          <div class="ec-icon">🎨</div>
+          <h3>Rebranding Completo</h3>
+          <p>Remova ou substitua completamente o branding "Open WebUI". Sua marca, sua identidade visual.</p>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Recurso</th>
+              <th>Open Source</th>
+              <th>Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Todas as funcionalidades core</td><td>✅</td><td>✅</td></tr>
+            <tr><td>Multi-provider</td><td>✅</td><td>✅</td></tr>
+            <tr><td>RAG & Knowledge</td><td>✅</td><td>✅</td></tr>
+            <tr><td>RBAC básico</td><td>✅</td><td>✅</td></tr>
+            <tr><td>SSO / OIDC</td><td>✅</td><td>✅</td></tr>
+            <tr><td>SCIM 2.0</td><td>❌</td><td>✅</td></tr>
+            <tr><td>Rebranding completo (&gt;50 users)</td><td>❌</td><td>✅</td></tr>
+            <tr><td>Suporte LTS</td><td>❌</td><td>✅</td></tr>
+            <tr><td>SLA garantido</td><td>❌</td><td>✅</td></tr>
+            <tr><td>Suporte dedicado</td><td>❌</td><td>✅</td></tr>
+            <tr><td>OpenTelemetry avançado</td><td>Parcial</td><td>✅</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 8: FAQ -->
+  <section class="content-section alt-bg" id="faq">
+    <div class="container">
+      <div class="section-label">// 08 · FAQ</div>
+      <h2 class="section-title">Perguntas <span class="highlight">Frequentes</span></h2>
+
+      <div class="faq-search-wrapper">
+        <input type="text" id="faqSearch" placeholder="Buscar pergunta..." class="faq-search">
+      </div>
+
+      <div class="faq-list" id="faqList">
+
+        <div class="faq-item" data-tags="instalacao docker">
+          <button class="faq-question">
+            <span>O Open WebUI funciona sem internet?</span>
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim! O Open WebUI foi projetado para operar <strong>completamente offline</strong>. Quando usado com Ollama e modelos locais (Llama, Mistral, etc.), nenhum dado sai da sua máquina. A única exceção é se você configurar providers em nuvem (OpenAI, Anthropic, etc.) ou habilitar busca na web.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="providers multi">
+          <button class="faq-question">
+            <span>Posso ter múltiplos providers conectados ao mesmo tempo?</span>
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim! Você pode conectar quantos providers quiser simultaneamente. Ollama local + OpenAI + Anthropic + Groq — todos ao mesmo tempo. Todos os modelos aparecem em um único dropdown unificado. Adicione novos providers em <strong>Admin Settings → Connections</strong>.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="hotswap modelos">
+          <button class="faq-question">
+            <span>Posso trocar de modelo durante uma conversa?</span>
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim! O Open WebUI suporta <strong>hotswap de modelos mid-conversation</strong>. O histórico completo da conversa é preservado e enviado ao novo modelo. Você também pode rodar dois modelos simultaneamente para comparar respostas lado a lado.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="licenca opensource fork">
+          <button class="faq-question">
+            <span>O Open WebUI é realmente open source?</span>
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim, o código é público no GitHub sob <strong>BSD 3-Clause com restrição de branding</strong>. Você pode usar, modificar e distribuir livremente. A única restrição é que você não pode remover o branding "Open WebUI" em implantações com mais de 50 usuários sem uma licença Enterprise.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="fork rebranding">
+          <button class="faq-question">
+            <span>Posso fazer fork e criar meu próprio produto?</span>
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim! Você pode fazer fork e criar seu próprio produto. Para implantações com até 50 usuários, você pode inclusive alterar o branding. Para mais de 50 usuários com rebranding, é necessária a licença Enterprise. Modificações técnicas (UI, features, integrações) são sempre livres.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="rag documentos">
+          <button class="faq-question">
+            <span>Como funciona o RAG? Quais formatos de arquivo são suportados?</span>
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>O RAG (Retrieval-Augmented Generation) permite que o modelo busque informações nos seus documentos. Formatos suportados incluem: <strong>PDF, DOCX, TXT, MD, CSV, XLSX, HTML, JSON</strong> e mais. O sistema usa busca híbrida (BM25 + vetorial) com reranking para máxima precisão. Você pode escolher entre 9 bancos de dados vetoriais diferentes.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="seguranca privacidade">
+          <button class="faq-question">
+            <span>Meus dados ficam seguros? Alguém tem acesso?</span>
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Quando auto-hospedado com modelos locais, <strong>nenhum dado sai da sua infraestrutura</strong>. Você tem controle total. Se usar providers em nuvem (OpenAI, etc.), os dados são enviados para esses serviços conforme suas políticas de privacidade. O Open WebUI em si não coleta dados dos seus usuários.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="atualizacao update">
+          <button class="faq-question">
+            <span>Como atualizar o Open WebUI?</span>
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-answer">
+            <div class="code-block small">
+              <pre><code><span class="c-comment"># Docker</span>
+docker pull ghcr.io/open-webui/open-webui:main
+docker stop open-webui && docker rm open-webui
+<span class="c-comment"># Re-execute o comando de instalação original</span>
+
+<span class="c-comment"># pip</span>
+pip install --upgrade open-webui
+
+<span class="c-comment"># Helm</span>
+helm repo update
+helm upgrade open-webui open-webui/open-webui -n open-webui</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="performance gpu">
+          <button class="faq-question">
+            <span>Preciso de GPU para usar o Open WebUI?</span>
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Não! O Open WebUI em si roda perfeitamente em CPU. A GPU é necessária apenas para <strong>inferência de modelos locais</strong> (via Ollama, vLLM, etc.) se você quiser velocidade máxima. Para modelos em nuvem (OpenAI, Anthropic), a GPU não é necessária em nenhum momento.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="multiusuario equipe">
+          <button class="faq-question">
+            <span>Posso usar o Open WebUI com múltiplos usuários na minha empresa?</span>
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim! O Open WebUI é multi-usuário por design. Suporta RBAC, grupos, SSO/OIDC e LDAP. Para equipes pequenas, a versão open source é suficiente. Para grandes organizações com necessidades de governança avançada, a versão Enterprise oferece SCIM 2.0, SLA e suporte dedicado.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="mcp tools extensoes">
+          <button class="faq-question">
+            <span>O Open WebUI suporta MCP (Model Context Protocol)?</span>
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sim! O Open WebUI tem suporte nativo ao <strong>Model Context Protocol (MCP)</strong> via Streamable HTTP. Você pode conectar servidores MCP de terceiros (como o Firecrawl, GitHub MCP, etc.) diretamente na interface. Além disso, suporta OpenAPI servers para auto-descoberta de ferramentas.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-tags="roadmap futuro">
+          <button class="faq-question">
+            <span>O que está planejado para o futuro do Open WebUI?</span>
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>O roadmap oficial inclui: <strong>Desktop App nativo</strong> (em desenvolvimento — sem Docker, sem terminal), <strong>AI Workflow Builder</strong> visual (arrastar e soltar pipelines), <strong>Tarefas Agendadas</strong> (automação recorrente), <strong>Fine-tuning integrado</strong> (datasets do seu uso), <strong>RAG Framework Modular</strong> e <strong>Perfis de Usuário</strong> para compartilhamento de configurações.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="content-section" id="roadmap">
+    <div class="container">
+      <div class="section-label">// BÔNUS · ROADMAP</div>
+      <h2 class="section-title">O que vem <span class="highlight">por aí</span></h2>
+      <div class="roadmap-grid">
+        <div class="roadmap-card in-progress">
+          <div class="roadmap-status">🔨 Em Desenvolvimento</div>
+          <h3>Desktop App</h3>
+          <p>Aplicativo nativo com integração em nível de sistema. Hotkeys globais, menu bar, notificações. Um download, dois cliques, rodando. Sem Docker, sem Python, sem terminal.</p>
+        </div>
+        <div class="roadmap-card in-progress">
+          <div class="roadmap-status">🔨 Em Desenvolvimento</div>
+          <h3>Usage Tracking & Cost Management</h3>
+          <p>Saiba exatamente quem está usando o quê, quantos tokens estão fluindo por cada modelo e quanto está custando. Breakdowns por usuário e controles de orçamento.</p>
+        </div>
+        <div class="roadmap-card planned">
+          <div class="roadmap-status">🔭 Planejado</div>
+          <h3>AI Workflow Builder</h3>
+          <p>Arraste, solte e conecte modelos, ferramentas, bases de conhecimento e lógica em pipelines multi-step. Visual. Sem código.</p>
+        </div>
+        <div class="roadmap-card planned">
+          <div class="roadmap-status">🔭 Planejado</div>
+          <h3>Tarefas Agendadas</h3>
+          <p>Configure sua IA para trabalhar enquanto você dorme. Geração de relatórios diários, pulls de dados semanais, monitoramento automatizado.</p>
+        </div>
+        <div class="roadmap-card planned">
+          <div class="roadmap-status">🔭 Planejado</div>
+          <h3>Fine-tuning Integrado</h3>
+          <p>Suas conversas e avaliações se tornam dados de treinamento. Datasets prontos para fine-tune a partir do seu uso real.</p>
+        </div>
+        <div class="roadmap-card planned">
+          <div class="roadmap-status">🔭 Planejado</div>
+          <h3>Wakeword Detection</h3>
+          <p>Diga a palavra e comece a falar. Sem teclado, sem clique, sem troca de aba. O futuro da interação humano-computador.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon small">OI</div>
+            <span>Open WebUI Wiki</span>
+          </div>
+          <p>Documentação não-oficial criada por <strong>Rabelus Lab</strong>. Conteúdo baseado na documentação oficial do Open WebUI.</p>
+          <div class="footer-badges">
+            <span class="badge-pill olive small">BSD-3 License</span>
+            <span class="badge-pill cyan small">Open Source</span>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Seções</h4>
+          <ul>
+            <li><a href="#visao-geral">Visão Geral</a></li>
+            <li><a href="#instalacao">Instalação</a></li>
+            <li><a href="#funcionalidades">Funcionalidades</a></li>
+            <li><a href="#arquitetura">Arquitetura</a></li>
+            <li><a href="#providers">Providers</a></li>
+            <li><a href="#customizacao">Customização</a></li>
+            <li><a href="#enterprise">Enterprise</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Recursos Oficiais</h4>
+          <ul>
+            <li><a href="https://openwebui.com" target="_blank">Site Oficial ↗</a></li>
+            <li><a href="https://docs.openwebui.com" target="_blank">Documentação ↗</a></li>
+            <li><a href="https://github.com/open-webui/open-webui" target="_blank">GitHub ↗</a></li>
+            <li><a href="https://discord.gg/5rJgQTnV4s" target="_blank">Discord ↗</a></li>
+            <li><a href="https://openwebui.com/enterprise" target="_blank">Enterprise ↗</a></li>
+            <li><a href="https://docs.openwebui.com/roadmap" target="_blank">Roadmap ↗</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Rabelus Lab</h4>
+          <ul>
+            <li><a href="https://rabelojunior81-collab.github.io/adilson-rabelo-portfolio/v2.html" target="_blank">Portfolio ↗</a></li>
+            <li><a href="https://github.com/rabelojunior81-collab" target="_blank">GitHub ↗</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Rabelus Lab · Documentação não-oficial do Open WebUI · Open WebUI é marca registrada de Open WebUI Inc.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">↑</button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
